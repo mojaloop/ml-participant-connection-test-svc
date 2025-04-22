@@ -1,10 +1,10 @@
 # Ping pong service
 
-[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/ping-pong-svc.svg?style=flat)](https://github.com/mojaloop/ping-pong-svc/commits/master)
-[![Git Releases](https://img.shields.io/github/release/mojaloop/ping-pong-svc.svg?style=flat)](https://github.com/mojaloop/ping-pong-svc/releases)
-[![Npm Version](https://img.shields.io/npm/v/@mojaloop/ping-pong-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ping-pong-svc)
-[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/ping-pong-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ping-pong-svc)
-[![CircleCI](https://circleci.com/gh/mojaloop/ping-pong-svc.svg?style=svg)](https://circleci.com/gh/mojaloop/ping-pong-svc)
+[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://github.com/mojaloop/ml-jws-health-check-svc/commits/master)
+[![Git Releases](https://img.shields.io/github/release/mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://github.com/mojaloop/ml-jws-health-check-svc/releases)
+[![Npm Version](https://img.shields.io/npm/v/@mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-jws-health-check-svc)
+[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-jws-health-check-svc)
+[![CircleCI](https://circleci.com/gh/mojaloop/ml-jws-health-check-svc.svg?style=svg)](https://circleci.com/gh/mojaloop/ml-jws-health-check-svc)
 
 This service is responsible for validating the mutual TLS (mTLS) setup,
 JSON Web Signature (JWS) functionality, and network connectivity with a Mojaloop hub.

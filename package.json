@@ -1,15 +1,15 @@
 {
-  "name": "@mojaloop/ping-pong-svc",
+  "name": "@mojaloop/ml-jws-health-check-svc",
   "version": "0.1.0",
   "description": "Typescript Mojaloop project template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mojaloop/ping-pong-svc.git"
+    "url": "git+https://github.com/mojaloop/ml-jws-health-check-svc.git"
   },
   "keywords": [
     "mojaloop",
     "services",
-    "ping-pong-svc"
+    "ml-jws-health-check-svc"
   ],
   "author": "lewisdaly",
   "contributors": [
@@ -19,9 +19,9 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mojaloop/ping-pong-svc/issues"
+    "url": "https://github.com/mojaloop/ml-jws-health-check-svc/issues"
   },
-  "homepage": "https://github.com/mojaloop/ping-pong-svc#readme",
+  "homepage": "https://github.com/mojaloop/ml-jws-health-check-svc#readme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [

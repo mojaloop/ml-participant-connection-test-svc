@@ -41,7 +41,7 @@ const program = new Command(PACKAGE.name);
 // when unit tests are run commander runs process.exit on unknown option in jest's command line
 program.exitOverride();
 try {
-  program.version(PACKAGE.version).description('ping-pong-svc cli').parse(process.argv);
+  program.version(PACKAGE.version).description('ml-jws-health-check-svc cli').parse(process.argv);
 } catch (err) {
   logger.error('error on program parsing process.argv', err);
 }

@@ -1,6 +1,6 @@
 {
   "VERSION": 1,
-  "CALLBACK_ENDPOINT": "http://ping-pong-svc:3300",
+  "CALLBACK_ENDPOINT": "http://ml-jws-health-check-svc:3300",
   "CALLBACK_RESOURCE_ENDPOINTS": {
     "enabled": true,
     "endpoints": [
