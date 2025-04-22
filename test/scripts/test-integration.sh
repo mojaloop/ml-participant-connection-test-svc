@@ -6,6 +6,7 @@ source ./docker/env.sh
 #docker load -i /tmp/docker-image.tar
 
 docker-compose up -d
+npm run wait-4-docker
 
 echo "==> running integration tests"
 INTEGRATION_TEST_EXIT_CODE=0
