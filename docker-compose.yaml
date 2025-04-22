@@ -144,6 +144,7 @@ services:
 
   redis-node-0:
     <<: *REDIS_NODE
+    container_name: redis-node-0
     environment:
       <<: *REDIS_ENVS
       REDIS_CLUSTER_CREATOR: yes

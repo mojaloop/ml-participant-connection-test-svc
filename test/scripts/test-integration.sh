@@ -7,6 +7,7 @@ source ./docker/env.sh
 
 docker-compose up -d
 npm run wait-4-docker
+curl localhost:3300/health
 
 echo "==> running integration tests"
 INTEGRATION_TEST_EXIT_CODE=0
