@@ -52,7 +52,7 @@ describe('Integration Test - POST /ping', () => {
         headers: expect.any(Object),
         body: expect.any(Object),
       }
-     });
+    });
   });
 
   it('should respond with 200 if the fsp response was an error', async () => {
@@ -73,6 +73,6 @@ describe('Integration Test - POST /ping', () => {
           errorInformation: expect.any(Object)
         }),
       }
-     });
+    });
   });
 });
