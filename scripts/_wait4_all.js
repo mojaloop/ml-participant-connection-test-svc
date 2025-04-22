@@ -9,7 +9,8 @@ const { execSync } = require('child_process')
 
 // Define the docker-compose containers you want to monitor here
 const expectedContainers = [
-  'ttk-provisioning'
+  'central-ledger',
+  'ml-jws-health-check-svc'
 ]
 
 let retries = 50
