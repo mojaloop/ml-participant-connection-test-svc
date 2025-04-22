@@ -14,8 +14,9 @@ FROM node:${NODE_VERSION} AS builder
 WORKDIR /opt/app
 
 RUN apk --no-cache add git
-RUN apk add --no-cache -t build-dependencies make gcc g++ python3 libtool openssl-dev autoconf automake bash \
-    && cd $(npm root -g)/npm
+RUN apk add --no-cache -t build-dependencies make gcc g++ python3 py3-setuptools libtool autoconf automake bash \
+    && cd $(npm root -g)/npm \
+    && npm install -g node-gyp
 
 ## Copy basic files for installing dependencies
 COPY tsconfig.json package*.json package-lock.json* /opt/app/
@@ -42,6 +43,6 @@ USER ml-user
 COPY --chown=ml-user --from=builder /opt/app .
 RUN npm prune --production
 
-EXPOSE 3300 3301
+EXPOSE 3300
 
 CMD [ "node" , "./dist/src/cli.js" ]

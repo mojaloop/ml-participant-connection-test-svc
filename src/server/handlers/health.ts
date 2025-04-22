@@ -46,9 +46,9 @@ export const get = async (_context: Context, _request: Request, h: ResponseToolk
   return h.response({
     ...await healthCheck.getHealth(),
     // @ts-ignore
-    subscriber: _request.server?.app?.subscriber?.isConnected,
+    pubSub: _request.server?.app?.pubSub?.isConnected,
     // @ts-ignore
-    publisher: _request.server?.app?.publisher?.isConnected,
+    kvsConnected: _request.server?.app?.kvs?.isConnected,
   }).code(200)
 }
 
