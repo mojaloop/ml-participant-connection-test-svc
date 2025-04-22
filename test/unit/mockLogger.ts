@@ -28,7 +28,7 @@
 
 import { ILogger } from '~/shared/types';
 
-export default function mockLogger(): any  {
+export default function mockLogger(): ILogger  {
   const methods = {
     // log methods
     log: jest.fn(),
