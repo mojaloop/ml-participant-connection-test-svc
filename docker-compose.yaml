@@ -22,6 +22,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: ml-jws-health-check-svc
+    user: root
     ports:
       - "3300:3300"
     networks:
