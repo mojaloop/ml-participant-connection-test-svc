@@ -41,18 +41,18 @@ describe('Integration Test - POST /ping', () => {
     try {
       const ulid = generateULID();
       const response = await axiosInstance.post(
-      '/ping',
-      { requestId: ulid },
-      { headers: { 'fspiop-destination': 'greenbankfsp' } }
+        '/ping',
+        { requestId: ulid },
+        { headers: { 'fspiop-destination': 'greenbankfsp' } }
       );
 
       expect(response.status).toBe(200);
       expect(response.data).toEqual({
-      requestId: ulid,
-      fspPutResponse: {
-        headers: expect.any(Object),
-        body: expect.any(Object),
-      }
+        requestId: ulid,
+        fspPutResponse: {
+          headers: expect.any(Object),
+          body: expect.any(Object),
+        }
       });
     } catch (error) {
       fail(`Request failed with error: ${error}`);
@@ -64,20 +64,20 @@ describe('Integration Test - POST /ping', () => {
     try {
       const ulid = '01JS31GNDW7B9EVH7Q43P85455';
       const response = await axiosInstance.post(
-      '/ping',
-      { requestId: ulid },
-      { headers: { 'fspiop-destination': 'greenbankfsp' } }
+        '/ping',
+        { requestId: ulid },
+        { headers: { 'fspiop-destination': 'greenbankfsp' } }
       );
 
       expect(response.status).toBe(200);
       expect(response.data).toEqual({
-      requestId: ulid,
-      fspPutResponse: {
-        headers: expect.any(Object),
-        body: expect.objectContaining({
-        errorInformation: expect.any(Object)
-        }),
-      }
+        requestId: ulid,
+        fspPutResponse: {
+          headers: expect.any(Object),
+          body: expect.objectContaining({
+            errorInformation: expect.any(Object)
+          }),
+        }
       });
     } catch (error) {
       fail(`Request failed with error: ${error}`);
