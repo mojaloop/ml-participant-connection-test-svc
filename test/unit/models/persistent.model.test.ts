@@ -150,6 +150,7 @@ describe('PersistentModel', () => {
   })
 
   afterEach(async () => {
+    await modelConfig.kvs.clearCache()
     await modelConfig.kvs.disconnect()
   })
 
@@ -286,7 +287,7 @@ describe('PersistentModel', () => {
 
       // transition `init` should encounter exception when saving `context.data`
       expect(() => pm.saveToKVS()).rejects.toEqual(new Error('error from KVS.set'))
-      expect(mocked(modelConfig.kvs.set)).toBeCalledWith(pm.key, JSON.stringify(pm.data))
+      expect(mocked(modelConfig.kvs.set)).toHaveBeenCalledWith(pm.key, JSON.stringify(pm.data))
     })
     it('should propagate error from KVS.set', async () => {
       mocked(modelConfig.kvs.set).mockImplementationOnce(() => {
@@ -298,7 +299,7 @@ describe('PersistentModel', () => {
 
       // transition `init` should encounter exception when saving `context.data`
       expect(() => pm.saveToKVS()).rejects.toEqual(new Error('error from KVS.set'))
-      expect(mocked(modelConfig.kvs.set)).toBeCalledWith(pm.key, JSON.stringify(pm.data))
+      expect(mocked(modelConfig.kvs.set)).toHaveBeenCalledWith(pm.key, JSON.stringify(pm.data))
     })
   })
 })

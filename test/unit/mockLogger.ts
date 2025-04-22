@@ -26,31 +26,30 @@
  --------------
  ******/
 
-import { logger } from '~/shared/logger';
 import { ILogger } from '~/shared/types';
 
-export default function mockLogger(keepQuiet = true): ILogger {
-  if (keepQuiet) {
-    const methods = {
-      // log methods
-      log: jest.fn(),
+export default function mockLogger(): any  {
+  const methods = {
+    // log methods
+    log: jest.fn(),
 
-      configure: jest.fn(),
+    configure: jest.fn(),
 
-      // generated methods from default levels
-      verbose: jest.fn(),
-      debug: jest.fn(),
-      warn: jest.fn(),
-      error: jest.fn(),
-      trace: jest.fn(),
-      info: jest.fn(),
-      fatal: jest.fn()
-    };
-    return {
-      ...methods,
-      push: jest.fn(() => methods)
-    } as unknown as ILogger;
-  }
-  // let be elaborative and log to console
-  return logger;
+    // generated methods from default levels
+    verbose: jest.fn(),
+    debug: jest.fn(),
+    warn: jest.fn(),
+    error: jest.fn(),
+    trace: jest.fn(),
+    info: jest.fn(),
+    fatal: jest.fn(),
+    loggerFactory: jest.fn(() => ({
+      context: jest.fn(),
+    })),
+  };
+  return {
+    ...methods,
+    push: jest.fn(() => methods)
+  } as unknown as ILogger;
+
 }

@@ -92,7 +92,6 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
    * from the PubSub that the requestPing has been resolved
    */
   async onRequestPing(): Promise<void> {
-    console.log(this.data.requestId)
     const channel = PingPongModel.notificationChannel(this.data.requestId)
     const subscriber: Util['Redis']['PubSub'] = this.subscriber
     const hubName = this.config.appConfig.HUB_PARTICIPANT.NAME
