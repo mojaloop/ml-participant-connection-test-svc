@@ -253,16 +253,8 @@ services:
         condition: service_healthy
       kafka:
         condition: service_healthy
-      #central-handler-position-batch:
-      #  condition: service_healthy
-      #ml-api-adapter:
-      #  condition: service_healthy
-      #account-lookup-service:
-      #  condition: service_healthy
-      #quoting-service:
-      #  condition: service_healthy
-      #quoting-service-handler:
-      #  condition: service_healthy
+      kafka-provisioning:
+        condition: service_completed_successfully
     networks:
       - mojaloop-net
     command:
