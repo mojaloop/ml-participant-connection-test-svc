@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/ml-jws-health-check-svc",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typescript Mojaloop project template",
   "repository": {
     "type": "git",
