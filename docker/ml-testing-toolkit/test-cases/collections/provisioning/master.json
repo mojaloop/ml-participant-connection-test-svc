@@ -1,0 +1,27 @@
+{
+  "order": [
+    {
+      "name": "hub_setup.json",
+      "type": "file",
+      "labels": [
+        "std"
+      ]
+    },
+    {
+      "name": "participant_receiver.json",
+      "type": "file",
+      "labels": [
+        "std",
+        "prod-tests"
+      ]
+    },
+    {
+      "name": "participant_sender.json",
+      "type": "file",
+      "labels": [
+        "std",
+        "prod-tests"
+      ]
+    }
+  ]
+}
