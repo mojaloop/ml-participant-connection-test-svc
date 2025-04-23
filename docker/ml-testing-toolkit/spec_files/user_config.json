@@ -1,6 +1,6 @@
 {
   "VERSION": 1,
-  "CALLBACK_ENDPOINT": "http://ml-jws-health-check-svc:3300",
+  "CALLBACK_ENDPOINT": "http://ml-jws-health-check-svc:3080",
   "CALLBACK_RESOURCE_ENDPOINTS": {
     "enabled": true,
     "endpoints": [

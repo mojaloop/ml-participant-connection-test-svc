@@ -34,7 +34,7 @@ const generateULID = Util.id({ type: 'ulid' });
 
 describe('Integration Test - POST /ping', () => {
   const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3300',
+    baseURL: 'http://localhost:3080',
   });
 
   it('should respond with 200 and a valid response body', async () => {
