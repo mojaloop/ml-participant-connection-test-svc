@@ -5,6 +5,7 @@ import mockLogger from '../../mockLogger'
 import { ServiceConfig } from 'config/serviceConfig';
 import { ILogger } from '~/shared/types';
 import RedisClient from '../../__mocks__/redis';
+import { PingStatus } from '~/shared/enums';
 
 jest.mock('@mojaloop/central-services-shared', () => ({
   Util: {
@@ -163,9 +164,9 @@ describe('PingPongModel', () => {
 
   it('should return the correct response from getResponse', () => {
     const model = new PingPongModel(mockData, mockConfig);
-    model['data'].response = { requestId: '12345', fspPutResponse: { test: 'response' } };
+    model['data'].response = { requestId: '12345', fspPutResponse: { test: 'response' }, pingStatus: PingStatus.SUCCESS };
     const response = model.getResponse();
-    expect(response).toEqual({ requestId: '12345', fspPutResponse: { test: 'response' } });
+    expect(response).toEqual({ requestId: '12345', fspPutResponse: { test: 'response' }, pingStatus: PingStatus.SUCCESS });
   });
 
   it('should run the workflow and transition states correctly', async () => {

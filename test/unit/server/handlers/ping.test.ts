@@ -30,6 +30,7 @@ import { Request, ResponseToolkit } from '@hapi/hapi'
 import { post } from '~/server/handlers/ping'
 import { create } from '~/models/outbound/pingPong.model'
 import { PingPongPostResponse } from '~/models/outbound/pingPong.interface'
+import { PingStatus } from '~/shared/enums'
 
 jest.mock('~/models/outbound/pingPong.model', () => ({
   create: jest.fn(),
@@ -102,6 +103,7 @@ describe('Ping Handler', () => {
           requestId: 'test-request-id'
         }
       },
+      pingStatus: PingStatus.SUCCESS
     }
     ;(create as jest.Mock).mockResolvedValue({
       run: jest.fn().mockResolvedValue(mockResult),

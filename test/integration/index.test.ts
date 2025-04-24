@@ -28,6 +28,7 @@
 
 import axios from 'axios';
 import { Util } from '@mojaloop/central-services-shared';
+import { PingStatus } from '~/shared/enums';
 
 // @ts-expect-error id definition is not declared in library
 const generateULID = Util.id({ type: 'ulid' });
@@ -51,7 +52,8 @@ describe('Integration Test - POST /ping', () => {
       fspPutResponse: {
         headers: expect.any(Object),
         body: expect.any(Object),
-      }
+      },
+      pingStatus: PingStatus.SUCCESS
     });
   });
 
@@ -72,7 +74,25 @@ describe('Integration Test - POST /ping', () => {
         body: expect.objectContaining({
           errorInformation: expect.any(Object)
         }),
-      }
+      },
+      pingStatus: PingStatus.JWS_FAILED
     });
   });
+
+  it('should respond with 200 if request timed out', async () => {
+    // ttk specific id to respond on /error endpoint
+    const ulid = '01JS31GNDW7B9EVH7Q43P85458';
+    const response = await axiosInstance.post(
+      '/ping',
+      { requestId: ulid },
+      { headers: { 'fspiop-destination': 'greenbankfsp' } }
+    );
+
+    expect(response.status).toBe(200);
+    expect(response.data).toEqual({
+      requestId: ulid,
+      fspPutResponse: null,
+      pingStatus: PingStatus.NOT_REACHABLE
+    });
+  }, 10000);
 });

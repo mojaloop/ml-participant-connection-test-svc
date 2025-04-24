@@ -39,6 +39,8 @@ import inspect from '~/shared/inspect'
 import SDK from '@mojaloop/sdk-standard-components';
 import CentralServicesShared, { Util } from '@mojaloop/central-services-shared'
 import { Enum } from '@mojaloop/central-services-shared'
+import { PingStatus } from '~/shared/enums';
+import { Errors } from '@mojaloop/sdk-standard-components';
 
 export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPongData> {
   protected config: PingPongModelConfig
@@ -107,11 +109,12 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
 
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
-      let subId = null
+      let timeout: NodeJS.Timeout | undefined
       try {
         // in handlers/inbound is implemented UpdateAccountsByUserId handler
         // which publish postPing response to channel
-        subId = subscriber.subscribe(channel, async (message: any) => {
+        subscriber.subscribe(channel, async (message: any) => {
+          clearTimeout(timeout)
           this.logger.debug(`Received message on channel: ${channel}`)
           // first unsubscribe
           subscriber.unsubscribe(channel)
@@ -119,7 +122,8 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           const putResponse = message as any
           this.data.response = {
             requestId: this.data.requestId,
-            fspPutResponse: putResponse
+            fspPutResponse: putResponse,
+            pingStatus: this.responseToPingStatusEnum(putResponse)
           }
           resolve()
         })
@@ -138,6 +142,17 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           payload: this.data.request.payload,
           hubNameRegex: Util.HeaderValidation.getHubNameRegex(hubName),
         })
+
+        timeout = setTimeout(() => {
+          this.logger.error(`Timeout waiting for message on channel: ${channel}`)
+          subscriber.unsubscribe(channel)
+          this.data.response = {
+            requestId: this.data.requestId,
+            fspPutResponse: null,
+            pingStatus: PingStatus.NOT_REACHABLE
+          }
+          resolve()
+        }, 5000)
       } catch (error) {
         subscriber.unsubscribe(channel)
         reject(error)
@@ -152,6 +167,17 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
    */
   getResponse(): PingPongPostResponse | void {
     return this.data.response
+  }
+
+  responseToPingStatusEnum(response: any): PingStatus {
+    if (response && response.body) {
+      if (response.body?.errorInformation?.errorCode === Errors.MojaloopApiErrorCodes.VALIDATION_ERROR.code) {
+        return PingStatus.JWS_FAILED
+      } else if (response.body?.requestId) {
+        return PingStatus.SUCCESS
+      }
+    }
+    return PingStatus.NOT_REACHABLE
   }
 
   /**
@@ -176,7 +202,6 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
         case 'errored':
           // stopped in errored state
           this.logger.info('State machine in errored state')
-          return
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {

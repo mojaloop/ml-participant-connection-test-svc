@@ -9,9 +9,9 @@ docker-compose up -d ml-jws-health-check-svc central-ledger mojaloop-testing-too
 npm run wait-4-docker
 curl localhost:3080/health
 
-sleep 15
-
 docker compose up -d ttk-provisioning
+
+sleep 15
 
 echo "==> running integration tests"
 INTEGRATION_TEST_EXIT_CODE=0
