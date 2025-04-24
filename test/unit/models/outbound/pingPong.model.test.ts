@@ -54,6 +54,13 @@ jest.mock('@mojaloop/sdk-standard-components', () => ({
       sign: jest.fn(),
     })),
   },
+  Errors: {
+    MojaloopApiErrorCodes: {
+      VALIDATION_ERROR: {
+        code: '3100'
+      }
+    }
+  }
 }))
 
 
@@ -146,12 +153,21 @@ describe('PingPongModel', () => {
 
     await promise;
     model.subscriber.publish(channel, {
-      test: 'response'
+      headers: {},
+      body: {
+        requestId: mockData.requestId,
+      }
     });
 
     expect(model['data'].response).toEqual({
       requestId: mockData.requestId,
-      fspPutResponse: { test: 'response' },
+      fspPutResponse: {
+        headers: {},
+        body: {
+          requestId: mockData.requestId,
+        }
+      },
+      pingStatus: PingStatus.SUCCESS,
     });
   });
 

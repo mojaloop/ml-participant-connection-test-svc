@@ -1,5 +1,5 @@
 export enum PingStatus {
-  SUCCESS = 'SUCESS',
+  SUCCESS = 'SUCCESS',
   NOT_REACHABLE = 'NOT_REACHABLE',
   JWS_FAILED = 'JWS_FAILED',
 }
