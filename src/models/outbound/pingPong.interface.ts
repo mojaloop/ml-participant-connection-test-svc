@@ -30,6 +30,7 @@ import { ControlledStateMachine, PersistentModelConfig, StateData } from '../per
 import { Method } from 'javascript-state-machine'
 import { ServiceConfig } from 'config/serviceConfig'
 import { Util } from '@mojaloop/central-services-shared'
+import { PingStatus } from '~/shared/enums'
 
 
 export enum PingPongModelState {
@@ -41,6 +42,7 @@ export enum PingPongModelState {
 export interface PingPongPostResponse {
   requestId: string
   fspPutResponse: any
+  pingStatus: PingStatus
 }
 
 export interface PingPongStateMachine extends ControlledStateMachine {

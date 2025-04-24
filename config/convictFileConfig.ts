@@ -74,7 +74,7 @@ export interface FileConfig {
 const ConvictFileConfig = Convict<FileConfig>({
   PORT: {
     format: Number,
-    default: 3300,
+    default: 3080,
     env: ENV_PREFIX + 'PORT'
   },
   HOST: {

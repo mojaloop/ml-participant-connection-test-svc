@@ -5,9 +5,11 @@ source ./docker/env.sh
 
 #docker load -i /tmp/docker-image.tar
 
-docker-compose up -d
+docker-compose up -d ml-jws-health-check-svc central-ledger mojaloop-testing-toolkit
 npm run wait-4-docker
-curl localhost:3300/health
+curl localhost:3080/health
+
+docker compose up -d ttk-provisioning
 
 sleep 15
 

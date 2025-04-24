@@ -32,10 +32,6 @@ RUN npm prune --production
 FROM node:${NODE_VERSION}
 WORKDIR /opt/app
 
-# Create empty log file & link stdout to the application log file
-RUN mkdir ./logs && touch ./logs/combined.log
-RUN ln -sf /dev/stdout ./logs/combined.log
-
 # Create a non-root user: ml-user
 RUN adduser -D ml-user
 USER ml-user
@@ -43,6 +39,6 @@ USER ml-user
 COPY --chown=ml-user --from=builder /opt/app .
 RUN npm prune --production
 
-EXPOSE 3300
+EXPOSE 3080
 
 CMD [ "node" , "./dist/src/cli.js" ]

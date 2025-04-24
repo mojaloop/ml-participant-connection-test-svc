@@ -24,7 +24,7 @@ services:
     container_name: ml-jws-health-check-svc
     user: root
     ports:
-      - "3300:3300"
+      - "3080:3080"
     networks:
       - mojaloop-net
     volumes:
@@ -34,10 +34,8 @@ services:
     depends_on:
       redis-node-0:
         condition: service_healthy
-      ttk-provisioning:
-        condition: service_completed_successfully
     healthcheck:
-      test: ["CMD", "sh", "-c" ,"apk --no-cache add curl", "&&", "curl",  "http://localhost:3300/health"]
+      test: ["CMD", "sh", "-c" ,"apk --no-cache add curl", "&&", "curl",  "http://localhost:3080/health"]
       interval: 30s
       timeout: 20s
       retries: 5
