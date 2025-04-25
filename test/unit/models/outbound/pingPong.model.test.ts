@@ -171,11 +171,18 @@ describe('PingPongModel', () => {
     });
   });
 
-  it('should handle errors in onRequestPing', async () => {
+  it('should return unreachable response if getEndpoint returns error', async () => {
     const model = new PingPongModel(mockData, mockConfig);
     (Util.Endpoints.getEndpoint as jest.Mock).mockRejectedValue(new Error('Endpoint error'));
+    await model.onRequestPing()
+    expect(model['data'].response).toEqual({ requestId: '12345', fspPutResponse: null, pingStatus: PingStatus.NOT_REACHABLE })
+  });
 
-    await expect(model.onRequestPing()).rejects.toThrow('Endpoint error');
+  it('should return unreachable response if sendEndpoint returns error', async () => {
+    const model = new PingPongModel(mockData, mockConfig);
+    (Util.Request.sendRequest as jest.Mock).mockRejectedValue(new Error('Endpoint error'));
+    await model.onRequestPing()
+    expect(model['data'].response).toEqual({ requestId: '12345', fspPutResponse: null, pingStatus: PingStatus.NOT_REACHABLE })
   });
 
   it('should return the correct response from getResponse', () => {

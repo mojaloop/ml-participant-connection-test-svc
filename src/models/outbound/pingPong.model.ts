@@ -100,12 +100,6 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
     const fspiopDestination = this.data.request.headers['fspiop-destination']
     const fspiopSignature = this.data.request.headers['fspiop-signature']
     const endpointType = Enum.EndPoints.FspEndpointTypes.FSPIOP_CALLBACK_URL_QUOTES
-    const participantEndpoint = await Util.Endpoints.getEndpoint(
-      this.config.appConfig.SWITCH_ENDPOINT,
-      fspiopDestination,
-      endpointType,
-      undefined
-    )
 
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
@@ -128,31 +122,49 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           resolve()
         })
 
-        await Util.Request.sendRequest({
-          url: participantEndpoint + '/ping',
-          source: hubName,
-          destination: fspiopDestination,
-          headers: {
-            'fspiop-source': hubName,
-            'fspiop-destination': fspiopDestination,
-            'fspiop-signature': fspiopSignature,
-          },
-          jwsSigner: this.getJWSSigner(hubName),
-          method: CentralServicesShared.Enum.Http.RestMethods.POST,
-          payload: this.data.request.payload,
-          hubNameRegex: Util.HeaderValidation.getHubNameRegex(hubName),
-        })
-
         timeout = setTimeout(() => {
           this.logger.error(`Timeout waiting for message on channel: ${channel}`)
           subscriber.unsubscribe(channel)
           this.data.response = {
             requestId: this.data.requestId,
             fspPutResponse: null,
-            pingStatus: PingStatus.NOT_REACHABLE
+            pingStatus: PingStatus.TIMED_OUT
           }
           resolve()
         }, 5000)
+
+        try {
+          const participantEndpoint = await Util.Endpoints.getEndpoint(
+            this.config.appConfig.SWITCH_ENDPOINT,
+            fspiopDestination,
+            endpointType,
+            undefined
+          )
+          await Util.Request.sendRequest({
+            url: participantEndpoint + '/ping',
+            source: hubName,
+            destination: fspiopDestination,
+            headers: {
+              'fspiop-source': hubName,
+              'fspiop-destination': fspiopDestination,
+              'fspiop-signature': fspiopSignature,
+            },
+            jwsSigner: this.getJWSSigner(hubName),
+            method: CentralServicesShared.Enum.Http.RestMethods.POST,
+            payload: this.data.request.payload,
+            hubNameRegex: Util.HeaderValidation.getHubNameRegex(hubName),
+          })
+        } catch (error) {
+          this.data.response = {
+            requestId: this.data.requestId,
+            fspPutResponse: null,
+            pingStatus: PingStatus.NOT_REACHABLE
+          }
+          subscriber.unsubscribe(channel)
+          clearTimeout(timeout)
+          resolve()
+        }
+
       } catch (error) {
         subscriber.unsubscribe(channel)
         reject(error)
