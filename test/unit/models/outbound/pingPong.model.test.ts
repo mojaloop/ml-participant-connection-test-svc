@@ -178,7 +178,7 @@ describe('PingPongModel', () => {
     expect(model['data'].response).toEqual({ requestId: '12345', fspPutResponse: null, pingStatus: PingStatus.NOT_REACHABLE })
   });
 
-  it('should return unreachable response if getEndpoint returns error', async () => {
+  it('should return unreachable response if sendEndpoint returns error', async () => {
     const model = new PingPongModel(mockData, mockConfig);
     (Util.Request.sendRequest as jest.Mock).mockRejectedValue(new Error('Endpoint error'));
     await model.onRequestPing()
