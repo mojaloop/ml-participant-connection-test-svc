@@ -92,7 +92,23 @@ describe('Integration Test - POST /ping', () => {
     expect(response.data).toEqual({
       requestId: ulid,
       fspPutResponse: null,
-      pingStatus: PingStatus.NOT_REACHABLE
+      pingStatus: PingStatus.TIMED_OUT
     });
   }, 10000);
+
+  it('should respond with 200 if the destination is unknown/unreachable', async () => {
+    const ulid = generateULID();
+    const response = await axiosInstance.post(
+      '/ping',
+      { requestId: ulid },
+      { headers: { 'fspiop-destination': 'unknownfsp' } }
+    );
+    console.log(response)
+    expect(response.status).toBe(200);
+    expect(response.data).toEqual({
+      requestId: ulid,
+      fspPutResponse: null,
+      pingStatus: PingStatus.NOT_REACHABLE
+    });
+  });
 });
