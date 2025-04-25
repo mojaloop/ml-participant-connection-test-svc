@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/mojaloop/ml-jws-health-check-svc/compare/v0.1.2...v0.1.3) (2025-04-25)
+
+
+### Features
+
+* address followup comments with unreachable enum ([#3](https://github.com/mojaloop/ml-jws-health-check-svc/issues/3)) ([d95505f](https://github.com/mojaloop/ml-jws-health-check-svc/commit/d95505f8fa93a3002d4ccc76619c6903ad7b6ca1))
+
 ### [0.1.2](https://github.com/mojaloop/ml-jws-health-check-svc/compare/v0.1.1...v0.1.2) (2025-04-24)
 
 
