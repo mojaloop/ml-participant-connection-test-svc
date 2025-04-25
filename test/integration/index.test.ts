@@ -103,7 +103,6 @@ describe('Integration Test - POST /ping', () => {
       { requestId: ulid },
       { headers: { 'fspiop-destination': 'unknownfsp' } }
     );
-    console.log(response)
     expect(response.status).toBe(200);
     expect(response.data).toEqual({
       requestId: ulid,
