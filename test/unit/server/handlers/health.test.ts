@@ -36,7 +36,7 @@ jest.mock('@mojaloop/central-services-shared', () => ({
         status: 'OK',
         uptime: 12345,
         version: '1.0.0',
-        name: 'ml-jws-health-check-svc',
+        name: 'ml-participant-connection-test-svc',
       }),
     })),
   },

@@ -1,15 +1,15 @@
 {
-  "name": "@mojaloop/ml-jws-health-check-svc",
+  "name": "@mojaloop/ml-participant-connection-test-svc",
   "version": "0.1.3",
   "description": "Typescript Mojaloop project template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mojaloop/ml-jws-health-check-svc.git"
+    "url": "git+https://github.com/mojaloop/ml-participant-connection-test-svc.git"
   },
   "keywords": [
     "mojaloop",
     "services",
-    "ml-jws-health-check-svc"
+    "ml-participant-connection-test-svc"
   ],
   "author": "lewisdaly",
   "contributors": [
@@ -19,9 +19,9 @@
   ],
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/mojaloop/ml-jws-health-check-svc/issues"
+    "url": "https://github.com/mojaloop/ml-participant-connection-test-svc/issues"
   },
-  "homepage": "https://github.com/mojaloop/ml-jws-health-check-svc#readme",
+  "homepage": "https://github.com/mojaloop/ml-participant-connection-test-svc#readme",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
@@ -66,11 +66,11 @@
     "@types/convict": "^6.1.6",
     "@types/javascript-state-machine": "2.4.4",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.15.0",
+    "@types/node": "^22.15.3",
     "@types/redis": "2.8.32",
     "@types/redis-mock": "0.17.3",
-    "@typescript-eslint/eslint-plugin": "8.31.0",
-    "@typescript-eslint/parser": "8.31.0",
+    "@typescript-eslint/eslint-plugin": "8.31.1",
+    "@typescript-eslint/parser": "8.31.1",
     "eslint": "8.57.0",
     "eslint-config-prettier": "10.1.2",
     "eslint-plugin-import": "2.31.0",

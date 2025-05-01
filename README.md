@@ -1,10 +1,10 @@
 # Ping pong service
 
-[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://github.com/mojaloop/ml-jws-health-check-svc/commits/master)
-[![Git Releases](https://img.shields.io/github/release/mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://github.com/mojaloop/ml-jws-health-check-svc/releases)
-[![Npm Version](https://img.shields.io/npm/v/@mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-jws-health-check-svc)
-[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/ml-jws-health-check-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-jws-health-check-svc)
-[![CircleCI](https://circleci.com/gh/mojaloop/ml-jws-health-check-svc.svg?style=svg)](https://circleci.com/gh/mojaloop/ml-jws-health-check-svc)
+[![Git Commit](https://img.shields.io/github/last-commit/mojaloop/ml-participant-connection-test-svc.svg?style=flat)](https://github.com/mojaloop/ml-participant-connection-test-svc/commits/master)
+[![Git Releases](https://img.shields.io/github/release/mojaloop/ml-participant-connection-test-svc.svg?style=flat)](https://github.com/mojaloop/ml-participant-connection-test-svc/releases)
+[![Npm Version](https://img.shields.io/npm/v/@mojaloop/ml-participant-connection-test-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-participant-connection-test-svc)
+[![NPM Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/npm/@mojaloop/ml-participant-connection-test-svc.svg?style=flat)](https://www.npmjs.com/package/@mojaloop/ml-participant-connection-test-svc)
+[![CircleCI](https://circleci.com/gh/mojaloop/ml-participant-connection-test-svc.svg?style=svg)](https://circleci.com/gh/mojaloop/ml-participant-connection-test-svc)
 
 This service is responsible for validating the mutual TLS (mTLS) setup,
 JSON Web Signature (JWS) functionality, and network connectivity with a Mojaloop hub.
