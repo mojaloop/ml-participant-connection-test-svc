@@ -5,7 +5,7 @@ source ./docker/env.sh
 
 #docker load -i /tmp/docker-image.tar
 
-docker-compose up -d ml-jws-health-check-svc central-ledger mojaloop-testing-toolkit
+docker-compose up -d ml-participant-connection-test-svc central-ledger mojaloop-testing-toolkit
 npm run wait-4-docker
 curl localhost:3080/health
 

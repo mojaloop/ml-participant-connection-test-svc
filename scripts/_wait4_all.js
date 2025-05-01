@@ -10,7 +10,7 @@ const { execSync } = require('child_process')
 // Define the docker-compose containers you want to monitor here
 const expectedContainers = [
   'central-ledger',
-  'ml-jws-health-check-svc',
+  'ml-participant-connection-test-svc',
   'mojaloop-testing-toolkit',
   'redis-node-0',
   'kafka'

@@ -17,18 +17,18 @@ x-redis-node: &REDIS_NODE
     - mojaloop-net
 
 services:
-  ml-jws-health-check-svc:
+  ml-participant-connection-test-svc:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ml-jws-health-check-svc
+    container_name: ml-participant-connection-test-svc
     user: root
     ports:
       - "3080:3080"
     networks:
       - mojaloop-net
     volumes:
-       - ./docker/ml-jws-health-check-svc/default.json:/opt/app/dist/config/default.json
+       - ./docker/ml-participant-connection-test-svc/default.json:/opt/app/dist/config/default.json
     environment:
       - NODE_ENV=production
     depends_on:
