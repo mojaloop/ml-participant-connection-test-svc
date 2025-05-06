@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.4...v0.1.5) (2025-05-06)
+
+
+### Chore
+
+* lint ([#6](https://github.com/mojaloop/ml-participant-connection-test-svc/issues/6)) ([e4ba76a](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/e4ba76a5d7e131361a9a454f4f4c7bf737ce9d2c))
+* log redis config ([4b8964a](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/4b8964a6fac53252543df115d3be8151b59cbb39))
+
 ### [0.1.4](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.3...v0.1.4) (2025-05-02)
 
 
