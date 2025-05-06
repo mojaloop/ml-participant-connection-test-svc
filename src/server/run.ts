@@ -34,7 +34,7 @@ import { Util } from '@mojaloop/central-services-shared';
 
 
 export default async function run(config: ServiceConfig): Promise<Server> {
-  logger.info(JSON.stringify(Config.REDIS.connectionConfig))
+  logger.info(JSON.stringify(Config.REDIS.connectionConfig));
 
   await Util.Endpoints.initializeCache(Config.CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG, {
     hubName: Config.HUB_PARTICIPANT.NAME,
