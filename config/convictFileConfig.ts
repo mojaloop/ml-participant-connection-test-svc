@@ -62,6 +62,7 @@ export interface FileConfig {
       JWS_SIGN: boolean
       JWS_SIGNING_KEY_PATH: string
       JWS_VERIFICATION_KEYS_DIRECTORY: string
+      FSPIOP_SOURCE_TO_SIGN: string
     }
   },
   CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG: {
@@ -152,6 +153,11 @@ const ConvictFileConfig = Convict<FileConfig>({
         format: Boolean,
         default: false,
         env: ENV_PREFIX + 'JWS_SIGN'
+      },
+      FSPIOP_SOURCE_TO_SIGN: {
+        format: String,
+        default: '',
+        env: ENV_PREFIX + 'FSPIOP_SOURCE_TO_SIGN'
       },
       JWS_SIGNING_KEY_PATH: {
         format: String,
