@@ -62,10 +62,7 @@ export interface FileConfig {
       JWS_SIGN: boolean
       JWS_SIGNING_KEY_PATH: string
       JWS_VERIFICATION_KEYS_DIRECTORY: string
-<<<<<<< Updated upstream
-=======
       FSPIOP_SOURCE_TO_SIGN: string
->>>>>>> Stashed changes
     }
   },
   CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG: {
@@ -157,14 +154,11 @@ const ConvictFileConfig = Convict<FileConfig>({
         default: false,
         env: ENV_PREFIX + 'JWS_SIGN'
       },
-<<<<<<< Updated upstream
-=======
       FSPIOP_SOURCE_TO_SIGN: {
         format: String,
         default: '',
         env: ENV_PREFIX + 'FSPIOP_SOURCE_TO_SIGN'
       },
->>>>>>> Stashed changes
       JWS_SIGNING_KEY_PATH: {
         format: String,
         default: '',

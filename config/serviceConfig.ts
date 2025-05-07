@@ -57,10 +57,7 @@ export interface ServiceConfig {
       JWS_SIGNING_KEY_PATH: string
       JWS_SIGNING_KEY: any
       JWS_VERIFICATION_KEYS_DIRECTORY: string
-<<<<<<< Updated upstream
-=======
       FSPIOP_SOURCE_TO_SIGN: string
->>>>>>> Stashed changes
     }
   },
   CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG: {
@@ -98,12 +95,8 @@ const ServiceConfig: ServiceConfig = {
       JWS_SIGN: ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_SIGN,
       JWS_SIGNING_KEY_PATH: ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_SIGNING_KEY_PATH,
       JWS_SIGNING_KEY: ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_SIGN ? getFileContent(ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_SIGNING_KEY_PATH) : '',
-<<<<<<< Updated upstream
-      JWS_VERIFICATION_KEYS_DIRECTORY: ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_VERIFICATION_KEYS_DIRECTORY
-=======
       JWS_VERIFICATION_KEYS_DIRECTORY: ConfigFileProperties.ENDPOINT_SECURITY.JWS.JWS_VERIFICATION_KEYS_DIRECTORY,
       FSPIOP_SOURCE_TO_SIGN: ConfigFileProperties.ENDPOINT_SECURITY.JWS.FSPIOP_SOURCE_TO_SIGN
->>>>>>> Stashed changes
     }
   },
   CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG: {
