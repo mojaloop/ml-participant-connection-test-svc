@@ -31,6 +31,7 @@ export interface ServiceConfig {
     enabled: boolean
     type: string
     connectionConfig: {
+      lazyConnect?: boolean
       cluster: Array<{
         host: string
         port: number
