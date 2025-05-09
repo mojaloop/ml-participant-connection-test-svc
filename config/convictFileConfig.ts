@@ -38,6 +38,7 @@ export interface FileConfig {
     enabled: boolean
     type: string
     connectionConfig: {
+      lazyConnect?: boolean
       cluster: Array<{
         host: string
         port: number
@@ -109,6 +110,11 @@ const ConvictFileConfig = Convict<FileConfig>({
       env: ENV_PREFIX + 'REDIS_TYPE'
     },
     connectionConfig: {
+      lazyConnect: {
+        format: Boolean,
+        default: false,
+        env: ENV_PREFIX + 'REDIS_LAZY_CONNECT'
+      },
       cluster: [{
         host: {
           format: String,
