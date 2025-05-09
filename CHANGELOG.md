@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.6...v0.1.7) (2025-05-09)
+
+
+### Chore
+
+* add config for lazy connect ([#8](https://github.com/mojaloop/ml-participant-connection-test-svc/issues/8)) ([0166e65](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/0166e65501e15cc3adcf1af0e7978cd3fb8b79cd))
+
 ### [0.1.6](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.5...v0.1.6) (2025-05-07)
 
 
