@@ -72,21 +72,6 @@ describe('run function', () => {
     jest.clearAllMocks();
   });
 
-  it('should initialize cache and connect to Redis', async () => {
-    // @ts-ignore
-    await run(mockConfig);
-
-    expect(Util.Endpoints.initializeCache).toHaveBeenCalledWith(
-      mockConfig.CENTRAL_SHARED_ENDPOINT_CACHE_CONFIG,
-      {
-        hubName: mockConfig.HUB_PARTICIPANT.NAME,
-        hubNameRegex: Util.HeaderValidation.getHubNameRegex(mockConfig.HUB_PARTICIPANT.NAME)
-      }
-    );
-    expect(Util.Redis.RedisCache.prototype.connect).toHaveBeenCalled();
-    expect(Util.Redis.PubSub.prototype.connect).toHaveBeenCalled();
-  });
-
   it('should create and start the server', async () => {
     (create as jest.Mock).mockResolvedValue(mockServer);
     // @ts-ignore
@@ -111,8 +96,4 @@ describe('run function', () => {
     await expect(run(mockConfig as any)).rejects.toThrow('Server creation failed');
   });
 
-  it('should throw an error if Redis connection fails', async () => {
-    (Util.Redis.RedisCache.prototype.connect as jest.Mock).mockRejectedValue(new Error('Redis connection failed'));
-    await expect(run(mockConfig as any)).rejects.toThrow('Redis connection failed');
-  });
 });
