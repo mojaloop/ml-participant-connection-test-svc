@@ -5,8 +5,14 @@
     "enabled": true,
     "type": "redis-cluster",
     "connectionConfig": {
+      "lazyConnect": true,
       "cluster": [
-        { "host": "redis-node-0", "port": 6379 }
+        { "host": "redis-node-0", "port": 6379 },
+        { "host": "redis-node-1", "port": 9301 },
+        { "host": "redis-node-2", "port": 9302 },
+        { "host": "redis-node-3", "port": 9303 },
+        { "host": "redis-node-4", "port": 9304 },
+        { "host": "redis-node-5", "port": 9305 }
       ]
     }
   },
