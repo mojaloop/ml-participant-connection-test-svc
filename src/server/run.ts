@@ -44,11 +44,6 @@ export default async function run(config: ServiceConfig): Promise<Server> {
   const kvs = new Util.Redis.RedisCache(Config.REDIS.connectionConfig);
   const pubSub = new Util.Redis.PubSub(Config.REDIS.connectionConfig);
 
-  if (Config.REDIS.connectionConfig.lazyConnect) {
-    await kvs.connect();
-    await pubSub.connect();
-  }
-
   const server = await create({...config }, { logger, pubSub, kvs });
   await plugins.register(server);
   await start(server);
