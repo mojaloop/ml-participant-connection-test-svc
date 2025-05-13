@@ -5,6 +5,7 @@
     "enabled": true,
     "type": "redis-cluster",
     "connectionConfig": {
+      "lazyConnect": true,
       "cluster": [
         { "host": "redis-node-0", "port": 6379 }
       ]
