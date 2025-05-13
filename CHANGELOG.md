@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.9...v0.1.10) (2025-05-13)
+
+
+### Chore
+
+* remove await from redis ([d6ab327](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/d6ab32714e5406998260e155ceb858c7b406f202))
+
 ### [0.1.9](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.8...v0.1.9) (2025-05-13)
 
 
