@@ -113,7 +113,7 @@
     "@hapi/vision": "7.0.3",
     "@mojaloop/central-services-error-handling": "^13.0.7",
     "@mojaloop/central-services-logger": "^11.8.1",
-    "@mojaloop/central-services-shared": "v18.24.0",
+    "@mojaloop/central-services-shared": "v18.26.0",
     "@mojaloop/sdk-standard-components": "^19.14.0",
     "blipp": "^4.0.2",
     "convict": "^6.2.4",
