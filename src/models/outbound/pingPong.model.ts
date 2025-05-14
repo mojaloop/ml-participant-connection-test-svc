@@ -155,6 +155,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
             hubNameRegex: Util.HeaderValidation.getHubNameRegex(hubName),
           })
         } catch (error) {
+          this.logger.error(`Error sending requestPing: `, error)
           this.data.response = {
             requestId: this.data.requestId,
             fspPutResponse: null,
@@ -203,7 +204,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
         case 'start':
           // the first transition is requestPing
           await this.fsm.requestPing()
-          this.logger.info(`postPing requested for ${data.userId},  currentState: ${data.currentState}`)
+          this.logger.info(`postPing requested for ${this.data.request.headers['fspiop-destination']},  currentState: ${data.currentState}`)
         /* falls through */
 
         case 'succeeded':
