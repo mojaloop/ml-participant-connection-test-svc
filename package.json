@@ -1,6 +1,6 @@
 {
   "name": "@mojaloop/ml-participant-connection-test-svc",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Typescript Mojaloop project template",
   "repository": {
     "type": "git",

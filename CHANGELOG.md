@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.10...v0.1.11) (2025-05-14)
+
+
+### Chore
+
+* bump deps ([24058bb](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/24058bb1a790907e7fb9432693b406f457142d05))
+* fix lock ([bc0a987](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/bc0a987e782e470356d6ed85ac5bf83c6cd47fd9))
+* fix lock ([cf65ea9](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/cf65ea9df72f6920b70017b829aa65db4de587eb))
+* log error ([0b5ace8](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/0b5ace815b7a1dc3e74c5eb2da7040ebfa375784))
+
 ### [0.1.10](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.9...v0.1.10) (2025-05-13)
 
 
