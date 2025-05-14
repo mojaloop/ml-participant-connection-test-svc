@@ -78,7 +78,6 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
     if (this.config.appConfig.ENDPOINT_SECURITY.JWS.JWS_SIGN &&
         from === this.config.appConfig.HUB_PARTICIPANT.NAME) {
       this.logger.debug('Notification::getJWSSigner: get JWS signer')
-      // @ts-ignore
       jwsSigner = new SDK.Jws.signer({
         logger: this.logger,
         signingKey: this.config.appConfig.ENDPOINT_SECURITY.JWS.JWS_SIGNING_KEY
