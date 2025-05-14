@@ -148,6 +148,8 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
               'fspiop-source': hubName,
               'fspiop-destination': fspiopDestination,
               'fspiop-signature': fspiopSignature,
+              'fspiop-http-method': Enum.Http.RestMethods.POST,
+              'fspiop-uri': '/ping',
             },
             jwsSigner: this.getJWSSigner(hubName),
             method: CentralServicesShared.Enum.Http.RestMethods.POST,
