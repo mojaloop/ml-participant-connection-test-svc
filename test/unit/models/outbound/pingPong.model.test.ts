@@ -50,7 +50,7 @@ jest.mock('@mojaloop/central-services-shared', () => ({
 
 jest.mock('@mojaloop/sdk-standard-components', () => ({
   Jws: {
-    JwsSigner: jest.fn().mockImplementation(() => ({
+    signer: jest.fn().mockImplementation(() => ({
       sign: jest.fn(),
     })),
   },
