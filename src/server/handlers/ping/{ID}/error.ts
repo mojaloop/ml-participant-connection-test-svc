@@ -50,7 +50,7 @@ export async function put(context: Context, request: Request, h: ResponseToolkit
     await publisher.publish(channel, { headers, body })
     logger.info(`Payload published to channel: ${channel}`)
 
-    return h.response({ status: 'success', channel }).code(200)
+    return h.response().code(200)
   } catch (error) {
     logger.error('Error in /ping/{ID} handler', error)
     return h.response({ error: error instanceof Error ? error.message : 'Unknown error' }).code(500)
