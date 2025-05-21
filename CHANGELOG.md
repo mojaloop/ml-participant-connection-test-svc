@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.13...v0.1.14) (2025-05-21)
+
+
+### Chore
+
+* fix put responses ([#12](https://github.com/mojaloop/ml-participant-connection-test-svc/issues/12)) ([1d1c126](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/1d1c12691fb2b77a5abf0dc5c021a2deba4beb05))
+
 ### [0.1.13](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.12...v0.1.13) (2025-05-14)
 
 
