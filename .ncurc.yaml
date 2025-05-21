@@ -4,6 +4,5 @@ reject: [
   "redis",
   "@types/redis",
   "redis-mock",
-  "@types/javascript-state-machine",
-  "@mojaloop/central-services-error-handling"
+  "@types/javascript-state-machine"
 ]
