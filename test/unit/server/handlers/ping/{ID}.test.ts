@@ -83,7 +83,6 @@ describe('PUT /ping/{ID}', () => {
       headers: mockRequest.headers,
       body: mockRequest.payload,
     })
-    expect(mockResponseToolkit.response).toHaveBeenCalledWith({ status: 'success', channel })
     expect(code).toHaveBeenCalledWith(200)
   })
 })

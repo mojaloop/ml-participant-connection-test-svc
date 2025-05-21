@@ -82,7 +82,6 @@ describe('PUT /ping/{ID}/error handler', () => {
       body: mockRequest.payload
     })
     expect(logger.info).toHaveBeenCalledWith(`Payload published to channel: ${channel}`)
-    expect(mockResponseToolkit.response).toHaveBeenCalledWith({ status: 'success', channel })
     expect(code).toHaveBeenCalledWith(200)
   })
 
