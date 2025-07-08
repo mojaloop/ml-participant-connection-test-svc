@@ -208,16 +208,16 @@ describe('PersistentModel', () => {
       checkPSMLayout(pm, { currentState: 'start' } as TestData)
 
       await pm.fsm.start2Middle()
-      expect(smConfig.methods!.onStart2Middle).toBeCalledTimes(1)
+      expect(smConfig.methods!.onStart2Middle).toHaveBeenCalledTimes(1)
       await pm.fsm.middle2End()
-      expect(smConfig.methods!.onMiddle2End).toBeCalledTimes(1)
+      expect(smConfig.methods!.onMiddle2End).toHaveBeenCalledTimes(1)
     })
   })
   describe('onPendingTransition', () => {
     it('should throw error if not `error` transition', async () => {
       const pm = new PersistentModel<TestStateMachine, TestData>(data, modelConfig, smConfig)
       checkPSMLayout(pm, { currentState: 'start' } as TestData)
-      expect(() => pm.fsm.start2Middle()).toThrowError(
+      expect(() => pm.fsm.start2Middle()).toThrow(
         "Transition 'start2Middle' requested while another transition is in progress"
       )
     })
