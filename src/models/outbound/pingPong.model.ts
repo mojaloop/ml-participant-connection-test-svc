@@ -66,7 +66,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
   // generate the name of notification channel dedicated for accounts requests
   static notificationChannel(id: string): string  {
     if (!(id && id.toString().length > 0)) {
-      throw new Error("PISPDiscoveryModel.notificationChannel: 'id' parameter is required")
+      throw new Error('PISPDiscoveryModel.notificationChannel: id parameter is required')
     }
     // channel name
     return `pingPong_${id}`
@@ -111,7 +111,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           clearTimeout(timeout)
           this.logger.debug(`Received message on channel: ${channel}`)
           // first unsubscribe
-          subscriber.unsubscribe(channel)
+          this.unsubscribeChannel(channel)
 
           const putResponse = message as any
           this.data.response = {
@@ -123,8 +123,8 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
         })
 
         timeout = setTimeout(() => {
-          this.logger.error(`Timeout waiting for message on channel: ${channel}`)
-          subscriber.unsubscribe(channel)
+          this.logger.error(`Timeout waiting for message on channel: ${channel}`, { fspiopDestination })
+          this.unsubscribeChannel(channel)
           this.data.response = {
             requestId: this.data.requestId,
             fspPutResponse: null,
@@ -157,19 +157,19 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
             hubNameRegex: Util.HeaderValidation.getHubNameRegex(hubName),
           })
         } catch (error) {
-          this.logger.error(`Error sending requestPing: `, error)
+          this.logger.error('Error sending requestPing: ', error)
           this.data.response = {
             requestId: this.data.requestId,
             fspPutResponse: null,
             pingStatus: PingStatus.NOT_REACHABLE
           }
-          subscriber.unsubscribe(channel)
+          this.unsubscribeChannel(channel)
           clearTimeout(timeout)
           resolve()
         }
 
       } catch (error) {
-        subscriber.unsubscribe(channel)
+        this.unsubscribeChannel(channel)
         reject(error)
       }
     })
@@ -207,7 +207,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           // the first transition is requestPing
           await this.fsm.requestPing()
           this.logger.info(`postPing requested for ${this.data.request.headers['fspiop-destination']},  currentState: ${data.currentState}`)
-        /* falls through */
+          /* falls through */
 
         case 'succeeded':
           // all steps complete so return
@@ -235,6 +235,14 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
         err.accountsState = { ...this.getResponse() }
       }
       throw err
+    }
+  }
+
+  private async unsubscribeChannel(channel: string) {
+    try {
+      return await this.subscriber.unsubscribe(channel);
+    } catch (err) {
+      this.logger.warn(`Error unsubscribing from channel: ${channel}`, err);
     }
   }
 }

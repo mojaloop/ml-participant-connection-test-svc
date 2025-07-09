@@ -20,7 +20,7 @@ module.exports = {
     'quote-props': ['error', 'as-needed'],
     quotes: ['error', 'single', { allowTemplateLiterals: false }],
     indent: ['error', 2, { SwitchCase: 1 }],
-    semi: ['error'],
+    semi: ['off'], // coz there are lot of missing semicolons in code
   },
   env: {
     node: true,

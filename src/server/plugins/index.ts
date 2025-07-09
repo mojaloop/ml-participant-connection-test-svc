@@ -33,6 +33,7 @@ import { Util } from '@mojaloop/central-services-shared'
 import ErrorHandling from '@mojaloop/central-services-error-handling'
 import Good from './good'
 import OpenAPI from './openAPI'
+import { logger } from '../../shared/logger'
 
 async function register(server: Server): Promise<Server> {
   const openapiBackend = await OpenAPI.initialize()
@@ -59,7 +60,10 @@ async function register(server: Server): Promise<Server> {
     Blip,
     ErrorHandling,
     Util.Hapi.HapiEventPlugin,
-    Util.Hapi.loggingPlugin
+    {
+      plugin: Util.Hapi.loggingPlugin,
+      options: { log: logger }
+    }
   ]
 
   await server.register(plugins)

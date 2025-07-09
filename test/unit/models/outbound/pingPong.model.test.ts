@@ -125,8 +125,8 @@ describe('PingPongModel', () => {
   });
 
   it('should throw an error if notificationChannel is called with an invalid id', () => {
-    expect(() => PingPongModel.notificationChannel('')).toThrowError(
-      "PISPDiscoveryModel.notificationChannel: 'id' parameter is required"
+    expect(() => PingPongModel.notificationChannel('')).toThrow(
+      "PISPDiscoveryModel.notificationChannel: id parameter is required"
     );
   });
 
