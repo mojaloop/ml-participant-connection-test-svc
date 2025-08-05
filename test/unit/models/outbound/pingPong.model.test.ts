@@ -151,13 +151,13 @@ describe('PingPongModel', () => {
     const promise = model.onRequestPing();
     const channel = PingPongModel.notificationChannel(mockData.requestId);
 
-    await promise;
     model.subscriber.publish(channel, {
       headers: {},
       body: {
         requestId: mockData.requestId,
       }
     });
+    await promise;
 
     expect(model['data'].response).toEqual({
       requestId: mockData.requestId,

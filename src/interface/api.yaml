@@ -279,6 +279,7 @@ components:
     Extension:
       title: Extension
       type: object
+      additionalProperties: false
       description: Data model for the complex type Extension.
       properties:
         key:
@@ -291,6 +292,7 @@ components:
     ExtensionList:
       title: ExtensionList
       type: object
+      additionalProperties: false
       description: Data model for the complex type ExtensionList. An optional list of extensions, specific to deployment.
       properties:
         extension:
@@ -305,6 +307,7 @@ components:
     ErrorInformation:
       title: ErrorInformation
       type: object
+      additionalProperties: false
       description: Data model for the complex type ErrorInformation.
       properties:
         errorCode:
@@ -319,6 +322,7 @@ components:
     ErrorInformationResponse:
       title: ErrorInformationResponse
       type: object
+      additionalProperties: false
       description: Data model for the complex type object that contains an optional element ErrorInformation used along with 4xx and 5xx responses.
       properties:
         errorInformation:
