@@ -32,6 +32,7 @@ export interface ServiceConfig {
     type: string
     connectionConfig: {
       lazyConnect?: boolean
+      slotsRefreshTimeout?: number
       cluster: Array<{
         host: string
         port: number
