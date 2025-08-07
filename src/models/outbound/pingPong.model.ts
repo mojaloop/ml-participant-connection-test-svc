@@ -107,7 +107,7 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
       try {
         // in handlers/inbound is implemented UpdateAccountsByUserId handler
         // which publish postPing response to channel
-        subscriber.subscribe(channel, async (message: any) => {
+        await subscriber.subscribe(channel, async (message: any) => {
           clearTimeout(timeout)
           this.logger.debug(`Received message on channel: ${channel}`)
           // first unsubscribe
