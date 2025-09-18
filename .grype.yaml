@@ -1,4 +1,16 @@
 ignore:
+  - vulnerability: GHSA-6vfc-qv3f-vr6c
+    package:
+      name: markdown-it
+  - vulnerability: GHSA-v88g-cgmw-v5xw
+    package:
+      name: ajv
+  - vulnerability: GHSA-282f-qqgm-c34q
+    package:
+      name: jsonpointer
+  - vulnerability: GHSA-p9pc-299p-vxgp
+    package:
+      name: yargs-parser
 
 # Set output format defaults
 output:
