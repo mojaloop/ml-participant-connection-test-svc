@@ -41,8 +41,8 @@ export default async function run(config: ServiceConfig): Promise<Server> {
     hubNameRegex: Util.HeaderValidation.getHubNameRegex(Config.HUB_PARTICIPANT.NAME)
   });
 
-  const kvs = new Util.Redis.RedisCache(Config.REDIS.connectionConfig);
-  const pubSub = new Util.Redis.PubSub(Config.REDIS.connectionConfig);
+  const kvs = new Util.Redis.RedisCache({ ...Config.REDIS.connectionConfig, lazyConnect: true });
+  const pubSub = new Util.Redis.PubSub({ ...Config.REDIS.connectionConfig, lazyConnect: true });
 
   await pubSub.connect();
   await kvs.connect();
