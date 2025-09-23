@@ -166,6 +166,8 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           clearTimeout(timeout)
           try {
             await this.unsubscribeChannel(channel)
+          } catch (unsubscribeError) {
+            this.logger.error('Error during unsubscribeChannel in requestPing cleanup:', unsubscribeError)
           } finally {
             resolve()
           }
