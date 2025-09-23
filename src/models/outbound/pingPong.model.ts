@@ -176,6 +176,8 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
       } catch (error) {
         try {
           await this.unsubscribeChannel(channel)
+        } catch (unsubscribeError) {
+          this.logger.error('Error unsubscribing from channel in error handler:', unsubscribeError);
         } finally {
           reject(error)
         }
