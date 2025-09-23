@@ -4,7 +4,7 @@ networks:
 
 # @see https://uninterrupted.tech/blog/hassle-free-redis-cluster-deployment-using-docker/
 x-redis-node: &REDIS_NODE
-  image: docker.io/bitnami/redis-cluster:7.2.5
+  image: docker.io/bitnamilegacy/redis-cluster:7.2.5
   environment: &REDIS_ENVS
     ALLOW_EMPTY_PASSWORD: yes
     REDIS_CLUSTER_DYNAMIC_IPS: no
@@ -80,7 +80,7 @@ services:
     container_name: kafka-provisioning
     networks:
       - mojaloop-net
-    image: docker.io/bitnami/kafka:${DEP_KAFKA_VERSION}
+    image: docker.io/bitnamilegacy/kafka:${DEP_KAFKA_VERSION}
     depends_on:
       - kafka
     volumes:
@@ -90,7 +90,7 @@ services:
   kafka:
     networks:
       - mojaloop-net
-    image: docker.io/bitnami/kafka:${DEP_KAFKA_VERSION}
+    image: docker.io/bitnamilegacy/kafka:${DEP_KAFKA_VERSION}
     container_name: kafka
     # ports:
     #   - "9092:9092"

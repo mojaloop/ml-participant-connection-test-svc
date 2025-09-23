@@ -107,11 +107,11 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
       try {
         // in handlers/inbound is implemented UpdateAccountsByUserId handler
         // which publish postPing response to channel
-        subscriber.subscribe(channel, async (message: any) => {
+        await subscriber.subscribe(channel, async (message: any) => {
           clearTimeout(timeout)
           this.logger.debug(`Received message on channel: ${channel}`)
           // first unsubscribe
-          this.unsubscribeChannel(channel)
+          await this.unsubscribeChannel(channel)
 
           const putResponse = message as any
           this.data.response = {
@@ -122,9 +122,9 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
           resolve()
         })
 
-        timeout = setTimeout(() => {
+        timeout = setTimeout(async() => {
           this.logger.error(`Timeout waiting for message on channel: ${channel}`, { fspiopDestination })
-          this.unsubscribeChannel(channel)
+          await this.unsubscribeChannel(channel)
           this.data.response = {
             requestId: this.data.requestId,
             fspPutResponse: null,
@@ -163,14 +163,24 @@ export class PingPongModel extends PersistentModel<PingPongStateMachine, PingPon
             fspPutResponse: null,
             pingStatus: PingStatus.NOT_REACHABLE
           }
-          this.unsubscribeChannel(channel)
           clearTimeout(timeout)
-          resolve()
+          try {
+            await this.unsubscribeChannel(channel)
+          } catch (unsubscribeError) {
+            this.logger.error('Error during unsubscribeChannel in requestPing cleanup:', unsubscribeError)
+          } finally {
+            resolve()
+          }
         }
 
       } catch (error) {
-        this.unsubscribeChannel(channel)
-        reject(error)
+        try {
+          await this.unsubscribeChannel(channel)
+        } catch (unsubscribeError) {
+          this.logger.error('Error unsubscribing from channel in error handler:', unsubscribeError);
+        } finally {
+          reject(error)
+        }
       }
     })
   }

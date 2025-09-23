@@ -39,6 +39,7 @@ export interface FileConfig {
     type: string
     connectionConfig: {
       lazyConnect?: boolean
+      slotsRefreshTimeout?: number
       cluster: Array<{
         host: string
         port: number
@@ -110,6 +111,11 @@ const ConvictFileConfig = Convict<FileConfig>({
       env: ENV_PREFIX + 'REDIS_TYPE'
     },
     connectionConfig: {
+      slotsRefreshTimeout: {
+        format: Number,
+        default: undefined,
+        env: ENV_PREFIX + 'REDIS_SLOTS_REFRESH_TIMEOUT'
+      },
       lazyConnect: {
         format: Boolean,
         default: false,

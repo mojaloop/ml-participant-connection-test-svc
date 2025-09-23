@@ -6,6 +6,7 @@
     "type": "redis-cluster",
     "connectionConfig": {
       "lazyConnect": true,
+      "slotsRefreshTimeout": 10000,
       "cluster": [
         { "host": "localhost", "port": 6379 }
       ]
