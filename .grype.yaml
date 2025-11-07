@@ -11,6 +11,24 @@ ignore:
   - vulnerability: GHSA-p9pc-299p-vxgp
     package:
       name: yargs-parser
+  - vulnerability: CVE-2025-9230
+    package:
+      name: libcrypto3
+  - vulnerability: CVE-2025-9230
+    package:
+      name: libssl3
+  - vulnerability: CVE-2025-9232
+    package:
+      name: libcrypto3
+  - vulnerability: CVE-2025-9232
+    package:
+      name: libssl3
+  - vulnerability: CVE-2025-9231
+    package:
+      name: libcrypto3
+  - vulnerability: CVE-2025-9231
+    package:
+      name: libssl3
 
 # Set output format defaults
 output:
