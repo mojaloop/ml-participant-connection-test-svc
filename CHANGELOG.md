@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.16...v0.1.17) (2025-11-07)
+
+
+### Chore
+
+* rename test flag ([#19](https://github.com/mojaloop/ml-participant-connection-test-svc/issues/19)) ([0b9f21d](https://github.com/mojaloop/ml-participant-connection-test-svc/commit/0b9f21d61032bc3a089d700210f82d86df9d4caa))
+
 ### [0.1.16](https://github.com/mojaloop/ml-participant-connection-test-svc/compare/v0.1.16-mem-leak.5...v0.1.16) (2025-09-23)
 
 
