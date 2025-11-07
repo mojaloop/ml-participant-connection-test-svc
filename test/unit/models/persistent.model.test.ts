@@ -26,6 +26,9 @@
  --------------
  ******/
 
+// @ts-ignore
+global.File = jest.fn();
+
 import { jest } from '@jest/globals'
 import { Util } from '@mojaloop/central-services-shared'
 import { StateMachineConfig, Method } from 'javascript-state-machine'

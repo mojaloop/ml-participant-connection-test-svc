@@ -26,13 +26,15 @@
  --------------
  ******/
 
+// @ts-ignore
+global.File = jest.fn();
+
 import { Server } from '@hapi/hapi';
 import run from '../../../src/server/run';
 import create from '../../../src/server/create';
 import start from '../../../src/server/start';
 import plugins from '../../../src/server/plugins';
 import { Util } from '@mojaloop/central-services-shared';
-import Config from '../../../src/shared/config';
 
 jest.mock('../../../src/server/create');
 jest.mock('../../../src/server/start');

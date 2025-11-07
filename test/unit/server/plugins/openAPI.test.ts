@@ -1,7 +1,10 @@
+// @ts-ignore
+global.File = jest.fn();
+
 import { Server } from '@hapi/hapi';
 import openApi from '../../../../src/server/plugins/openAPI';
 import Path from 'path';
-import { HealthCheck, Util } from '@mojaloop/central-services-shared';
+import { Util } from '@mojaloop/central-services-shared';
 
 jest.mock('@mojaloop/central-services-shared', () => ({
   Util: {
