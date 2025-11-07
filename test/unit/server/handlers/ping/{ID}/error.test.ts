@@ -26,6 +26,9 @@
  --------------
  ******/
 
+// @ts-ignore
+global.File = jest.fn();
+
 import { put } from '~/server/handlers/ping/{ID}/error'
 import { Request, ResponseToolkit } from '@hapi/hapi'
 import { logger } from '~/shared/logger'

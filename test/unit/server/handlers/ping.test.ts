@@ -26,6 +26,9 @@
  --------------
  ******/
 
+// @ts-ignore
+global.File = jest.fn();
+
 import { Request, ResponseToolkit } from '@hapi/hapi'
 import { post } from '~/server/handlers/ping'
 import { create } from '~/models/outbound/pingPong.model'
